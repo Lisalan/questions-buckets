@@ -1,0 +1,33 @@
+<span>
+  <h1>All Unmatched Questions</h1>
+
+  <ul class="questions">
+    <%=form_tag update_multiple_questions_path do %>
+      <% @unmatched.each do |question| %>
+      <li>
+        <%=check_box_tag "unmatched[]", question.id %>
+        <%=label_tag question.content %>
+      </li>
+      <% end %>
+      <% grouped_options =[['Question Type', [["Nonmatched Questions", "nonmatched"]]], ['Bucket Name', Bucket.all.map { |bucket| [bucket.name, bucket.id] }]] %>
+      <%=select_tag 'move-questions-to-bucket', grouped_options_for_select(grouped_options), prompt: 'Move selected questions to...' %>    
+      <%=submit_tag 'Move', class: "move-button"%>
+    <% end %>
+  </ul>
+</span> 
+
+<span>
+  <h1>All Nonmatched Questions</h1>
+
+  <ul class="questions">
+    <%=form_tag update_multiple_questions_path do %>
+      <% @nonmatched.each do |question| %>
+      <li>
+        <%=check_box_tag "nonmatched[]", question.id %>
+        <%=label_tag question.content %>
+      </li>
+      <% end %> 
+      <%=submit_tag 'Move to unmatched questions', class: "move-button-to" %>
+    <% end %>
+  </ul>
+</span> 
