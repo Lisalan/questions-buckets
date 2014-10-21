@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
   has_one :bucket
   
 
-  validates_uniqueness_of :content
+  # validates_uniqueness_of :content
   validates :content, presence: true, uniqueness: true
 
   before_create :add_default_role
