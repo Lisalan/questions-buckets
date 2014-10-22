@@ -1,11 +1,12 @@
 class BucketsController < ApplicationController
   def index
-    if params[:bucket_name].present?
-      @buckets = Bucket.search_bucket(params[:bucket_name])
-    else
-      @buckets = Bucket.all
+    @buckets = Bucket.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @buckets.to_csv}
+      format.xls { send_data @buckets.to_csv(col_sep: "\t")}
     end
-    @bucket = Bucket.new
+    
   end
 
   def create
@@ -15,6 +16,15 @@ class BucketsController < ApplicationController
     else
       render 'index'
     end    
+  end
+
+  def search
+    if params[:bucket_name].present?
+      @buckets = Bucket.search_bucket(params[:bucket_name])
+    else
+      @buckets = []
+    end 
+    @bucket = Bucket.new 
   end
 
   private

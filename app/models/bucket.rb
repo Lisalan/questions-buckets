@@ -14,8 +14,16 @@ class Bucket < ActiveRecord::Base
   def self.search_bucket(query)
     unless query.nil?
       buckets = where(name: query)
-    else
-      
+    else    
+    end
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |bucket|
+        csv << bucket.attributes.values_at(*column_names)
+      end
     end
     
   end

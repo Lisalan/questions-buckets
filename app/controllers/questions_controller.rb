@@ -30,6 +30,7 @@ class QuestionsController < ApplicationController
       else
         questions.update_all(bucket_id: @bucket_id, role: "matched")
         flash[:success] = "Move unmatched questions to selected bucket successfully." 
+        
       end     
     else  
     end

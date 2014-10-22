@@ -1,0 +1,28 @@
+<h1>Search for Bucket</h1>
+  <h2>Create a Bucket</h2>
+    <%= form_for(@bucket) do |f| %>
+     <%= f.text_field :name %>
+     <%= f.submit "Create a Bucket", class: "btn btn-primary" %>
+    <% end %>
+
+  <%=form_tag search_buckets_path, method: :get do %>
+    <h2> Search for a Bucket: </h2>
+    <%=text_field_tag :bucket_name, params[:bucket_name], placeholder: "Enter search..." %>
+    <%=submit_tag "Search" %>
+  <%end%>
+  <%=button_to "Clear", search_buckets_path, method: :get%>
+<%if @buckets.present? %>
+  <% @buckets.each do |bucket| %>
+    <h2>
+      Bucket name:
+      <%=bucket.name%>   
+    </h2>
+    <span>
+      <% bucket.questions.each do |question| %>    
+        <li>
+          <%=question.content %>
+        </li>
+      <% end %>
+    </span>
+  <% end %> 
+<%end%>

@@ -6,7 +6,10 @@ Bq::Application.routes.draw do
     post :update_multiple, on: :collection
   end
 
-  resources :buckets
+  resources :buckets do
+    get :search, on: :collection
+  end
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
