@@ -26,10 +26,10 @@ class QuestionsController < ApplicationController
       questions = Question.for_id(params[:unmatched])
       if @bucket_id == "nonmatched"
         questions.update_all(role: @bucket_id)
-        flash[:success] = "Move unmatched questions to selected bucket successfully."
+        flash[:success] = "Move unmatched questions to nonmatched questions successfully ."
       else
         questions.update_all(bucket_id: @bucket_id, role: "matched")
-        flash[:success] = "Move unmatched questions to nonmatched questions successfully ."
+        flash[:success] = "Move unmatched questions to selected bucket successfully." 
       end     
     else  
     end
