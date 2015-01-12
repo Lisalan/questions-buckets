@@ -1,6 +1,9 @@
 Virtual Patient Conversation Stores
+
 Background.
+
 Two examples of buckets/sentences:
+
 Bucket 0:
 Bucket name: if I eat cake Questions:
 Do you eat cake?
@@ -9,6 +12,7 @@ Have you eaten cake?
 Do you ever eat cake?
 Are you a cake-eater?
 Is cake something that you eat?
+
 Bucket 1:
 Bucket name: what my health history is Questions:
 What is your health history?
@@ -19,14 +23,21 @@ What health problems do you have?
 What are your health issues?
 In order to constantly grow our digital patients, we add new questions into the buckets.
 
+
 Task
+
 Write a web app using either RoR (Ruby on Rails) or .Net that enables us to “match” new Questions into appropriate Buckets.
 Given
 The above example’s Buckets and Questions.
+
 A set of Questions that are un-matched (not currently in any Bucket).
+
 Requirements
+
 ● Database stores objects of type Question and Bucket. Questions can be matched, un-matched, or not-matchable.
+
 ● Question Matching view
+
 ○ The user should be able to copy and paste a set of newline delimited “un-matched”
 Questions into a text area.
 ■ The pasted “un-matched” Questions should be validated against the existing
@@ -35,15 +46,23 @@ matched into an existing Bucket.
 ■ Validated un-matched Questions should be retained in the database
 automatically, and retrieved into the un-matched Question view on subsequent
 loads.
+
 ○ The user should view un-matched Questions in a list.
+
 ○ The user should view a list of existing Buckets and the Questions contained within.
+
 ○ The user should be able to search Buckets’ Bucket name, in order to filter the view of
 existing Buckets.
+
 ○ The user should be able to select one or more “un-matched” Questions and match them
 into one selected Bucket by clicking a button or drag-drop.
+
 ○ The user should be able to move one or more selected “un-matched” Questions into an
 “Not-Matchable Questions” list by clicking a button or drag-drop.
+
 ○ The user should be able to move one or more selected “non-matchable” Questions into
 the “un-matched” list by clicking a button or drag-drop.
+
 ● Exporting a serialized object
+
 ○ The user should be able to click a “Publish” button to export (to disk is fine) an XML serialized set of Buckets (all Buckets in the database).
